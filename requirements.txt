@@ -1,0 +1,10 @@
+ matplotlib
+ numpy
+ scikit-learn
+ seaborn
+ torch
+ torchvision
+ jupyterlab
+ jupyterlab-debugger
+nltk
+spacy
