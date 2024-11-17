@@ -92,8 +92,13 @@ def mnist():
     i = 0
     j = 0
 
+    # Initialize variables for early stopping
+    patience = 3  # Number of epochs to wait before stopping if no improvement
+    best_val_loss = float('inf')  # Initialize with infinity
+    epochs_no_improve = 0  # Counter for epochs with no improvement
+
     # Training loop
-    num_epochs = 5
+    num_epochs = 50
     for epoch in range(num_epochs):
         model.train()
         running_loss = 0.0
@@ -134,8 +139,24 @@ def mnist():
                 _, predicted = torch.max(outputs, 1)
                 correct += (predicted == labels).sum().item()
 
+        val_loss /= len(val_loader)
         val_accuracy = 100 * correct / len(val_set)
         print(f'Validation Loss: {val_loss / len(val_loader):.4f}, Accuracy: {val_accuracy:.2f}%')
+
+            # Early stopping logic
+        if val_loss < best_val_loss:
+            best_val_loss = val_loss  # Update the best validation loss
+            epochs_no_improve = 0  # Reset the counter
+            torch.save(model.state_dict(), 'best_model.pth')  # Save the best model
+        else:
+            epochs_no_improve += 1
+            print(f"No improvement in validation loss for {epochs_no_improve} epochs.")
+
+        if epochs_no_improve >= patience:
+            print("Early stopping triggered.")
+            break  # Exit the training loop
+
+
 
     # Testing loop
     model.eval()

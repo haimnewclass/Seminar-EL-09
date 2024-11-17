@@ -1,10 +1,14 @@
- matplotlib
- numpy
- scikit-learn
- seaborn
- torch
- torchvision
- jupyterlab
- jupyterlab-debugger
+matplotlib
+numpy
+scikit-learn
+seaborn
+torch
+torchvision
+jupyterlab
+jupyterlab-debugger
 nltk
 spacy
+tensorflow
+matplotlib
+opencv-python
+scikit-learn
