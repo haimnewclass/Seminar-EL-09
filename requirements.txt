@@ -5,10 +5,11 @@ seaborn
 torch
 torchvision
 jupyterlab
-jupyterlab-debugger
-nltk
-spacy
 tensorflow
-matplotlib
-opencv-python
+faiss-cpu
+langchain
+openai
+langchain-openai
 scikit-learn
+pandas
+matplotlib
