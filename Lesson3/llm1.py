@@ -64,7 +64,7 @@ label_pipeline = lambda x: int(x) - 1
 
 # Get the first item from the dataset
 
-item = next(iter(train_iter))
+first_item = next(iter(train_iter))
 
 # Apply the pipelines
 processed_text = text_pipeline(first_item[1])
