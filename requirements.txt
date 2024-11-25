@@ -13,3 +13,5 @@ langchain-openai
 scikit-learn
 pandas
 matplotlib
+portalocker
+torchtext
