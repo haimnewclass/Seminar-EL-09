@@ -8,7 +8,7 @@ from langchain.text_splitter import CharacterTextSplitter
 
 
 # Set your OpenAI API key
-os.environ["OPENAI_API_KEY"] = 'sk-proj-EQMqgijEbHhJe3z9NBk9btSbIRFvA29sPlMb-vKJaDT3BlbkFJu3ulwDrx_rSjuH0Rn9eOhI7_6E4BnAA'
+os.environ["OPENAI_API_KEY"] = ''
 
 
 
