@@ -1,0 +1,10 @@
+pip list
+pip list --not-required
+python -m venv xgboost_env - create new environment
+
+pip install -r requirements.txt
+
+1. cd\ env full path
+2. .\scripts\activate
+
+
