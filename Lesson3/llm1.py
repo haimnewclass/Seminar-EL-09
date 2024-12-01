@@ -45,7 +45,7 @@ def yield_tokens(data_iter):
 
 
 
-# Build a look-up table of vocabulary (covert words/tokens to indices)
+# Build a look-up table of vocabulary (covert words/tokens to indices uniqueue, like distionary)
 vocab = build_vocab_from_iterator(yield_tokens(train_iter), specials=["<unk>"])
 # Set default index for unknown words
 vocab.set_default_index(vocab["<unk>"])
