@@ -17,18 +17,18 @@ dtest = xgb.DMatrix(X_test, label=y_test)
 
 # Define parameters
 param = {
-    'max_depth': 5,
+    'max_depth': 10,
     'eta': 0.1,
     'objective': 'binary:logistic',
     'eval_metric': ['logloss', 'error', 'auc'],
     'alpha': 10,
     'colsample_bytree': 0.3
 }
-num_round = 200
+num_round = 500
 evallist = [(dtest, 'eval'), (dtrain, 'train')]
 
 # Train the model
-bst = xgb.train(param, dtrain, num_round, evallist, early_stopping_rounds=10)
+bst = xgb.train(param, dtrain, num_round, evallist, early_stopping_rounds=100)
 
 # Predict and evaluate
 y_pred_proba = bst.predict(dtest)
