@@ -25,3 +25,15 @@ test_record_pred = model.predict(test_record)
 
 # Output prediction
 print(f"Prediction for the test record is: {test_record_pred}")
+
+
+# 10 test records
+test_records = X_test[:10]
+test_records_pred = model.predict(test_records)
+
+# Output prediction
+for i in range(10):
+    print(f"Test #{i + 1}")
+    print(f"Predicted: {test_records_pred[i]}")
+    print(f"Actual: {y_test[i]}")
+    print("----------")
