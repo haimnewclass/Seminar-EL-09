@@ -16,3 +16,4 @@ matplotlib
 portalocker
 torchtext
 xgboost
+sklearn
