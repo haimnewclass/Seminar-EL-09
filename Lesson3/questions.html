@@ -1,0 +1,165 @@
+<h3 id="student-assignment-understanding-xgboost-code---10-steps"><strong>Student Assignment: Understanding XGBoost Code - 10 Steps</strong></h3>
+<h4 id="objective"><strong>Objective:</strong></h4>
+<p>This assignment will help you understand how to work with the <code>XGBClassifier</code> using the <code>Iris</code> dataset. You will learn how to install necessary libraries, build and evaluate models, and experiment with model parameters. The steps are structured progressively to help you explore and understand the code step by step.</p>
+<hr>
+<h3 id="step-1-install-required-libraries"><strong>Step 1: Install Required Libraries</strong></h3>
+<p><strong>Task:</strong></p>
+<ul>
+<li>Install the required libraries: <code>xgboost</code> and <code>scikit-learn</code>.</li>
+<li>Use the following command:<pre><code class="language-bash">pip install xgboost scikit-learn
+</code></pre>
+</li>
+</ul>
+<p><strong>Verify Installation:</strong></p>
+<ul>
+<li>Run the following code in Python:<pre><code class="language-python">import xgboost
+from sklearn.datasets import load_iris
+print(&quot;Libraries imported successfully!&quot;)
+</code></pre>
+</li>
+</ul>
+<hr>
+<h3 id="step-2-load-data"><strong>Step 2: Load Data</strong></h3>
+<p><strong>Task:</strong></p>
+<ul>
+<li>Load the <code>Iris</code> dataset from <code>scikit-learn</code>.</li>
+<li>Use this code:<pre><code class="language-python">from sklearn.datasets import load_iris
+data = load_iris()
+print(&quot;Feature Names:&quot;, data.feature_names)
+print(&quot;Target Names:&quot;, data.target_names)
+</code></pre>
+</li>
+<li><strong>Question for Students:</strong><ul>
+<li>How many features are there in the dataset? What do they represent?</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="step-3-split-the-data"><strong>Step 3: Split the Data</strong></h3>
+<p><strong>Task:</strong></p>
+<ul>
+<li>Split the dataset into training and testing sets using <code>train_test_split</code>:<pre><code class="language-python">from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(data.data, data.target, test_size=0.2, random_state=42)
+print(&quot;Training Set Size:&quot;, X_train.shape)
+print(&quot;Test Set Size:&quot;, X_test.shape)
+</code></pre>
+</li>
+<li><strong>Question for Students:</strong><ul>
+<li>Why do we split the data? What are the training and testing sets used for?</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="step-4-create-an-xgboost-model"><strong>Step 4: Create an XGBoost Model</strong></h3>
+<p><strong>Task:</strong></p>
+<ul>
+<li>Create a basic model using <code>XGBClassifier</code> with the following parameters:<pre><code class="language-python">from xgboost import XGBClassifier
+model = XGBClassifier(n_estimators=10, learning_rate=0.1, max_depth=3)
+</code></pre>
+</li>
+<li><strong>Question for Students:</strong><ul>
+<li>What does each parameter (e.g., <code>n_estimators</code> and <code>max_depth</code>) represent?</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="step-5-train-the-model"><strong>Step 5: Train the Model</strong></h3>
+<p><strong>Task:</strong></p>
+<ul>
+<li>Train the model using the training set:<pre><code class="language-python">model.fit(X_train, y_train)
+print(&quot;Model trained successfully!&quot;)
+</code></pre>
+</li>
+<li><strong>Question for Students:</strong><ul>
+<li>What does the <code>fit</code> method do?</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="step-6-make-predictions"><strong>Step 6: Make Predictions</strong></h3>
+<p><strong>Task:</strong></p>
+<ul>
+<li>Use the trained model to predict results for the testing set:<pre><code class="language-python">y_pred = model.predict(X_test)
+print(&quot;Predictions:&quot;, y_pred)
+</code></pre>
+</li>
+<li><strong>Question for Students:</strong><ul>
+<li>What is the output of the <code>predict</code> method?</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="step-7-evaluate-the-model"><strong>Step 7: Evaluate the Model</strong></h3>
+<p><strong>Task:</strong></p>
+<ul>
+<li>Evaluate the accuracy of the model using <code>accuracy_score</code>:<pre><code class="language-python">from sklearn.metrics import accuracy_score
+accuracy = accuracy_score(y_test, y_pred)
+print(&quot;Accuracy:&quot;, accuracy)
+</code></pre>
+</li>
+<li><strong>Question for Students:</strong><ul>
+<li>What does the <code>accuracy</code> metric represent?</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="step-8-predict-a-single-record"><strong>Step 8: Predict a Single Record</strong></h3>
+<p><strong>Task:</strong></p>
+<ul>
+<li>Predict the class for a new record (e.g., <code>[5.1, 3.5, 1.4, 0.2]</code>):<pre><code class="language-python">test_record = [[5.1, 3.5, 1.4, 0.2]]
+prediction = model.predict(test_record)
+print(&quot;Prediction for test record:&quot;, prediction)
+</code></pre>
+</li>
+<li><strong>Question for Students:</strong><ul>
+<li>What is the purpose of the <code>predict</code> method in this case?</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="step-9-explore-the-test-set"><strong>Step 9: Explore the Test Set</strong></h3>
+<p><strong>Task:</strong></p>
+<ul>
+<li>Predict the first 10 examples from the testing set and compare them to the actual values:<pre><code class="language-python">test_records = X_test[:10]
+predictions = model.predict(test_records)
+for i in range(10):
+    print(f&quot;Record {i+1}: Predicted = {predictions[i]}, Actual = {y_test[i]}&quot;)
+</code></pre>
+</li>
+<li><strong>Question for Students:</strong><ul>
+<li>What can you infer about the model&#39;s accuracy based on this comparison?</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="step-10-experiment-with-parameters"><strong>Step 10: Experiment with Parameters</strong></h3>
+<p><strong>Task:</strong></p>
+<ul>
+<li>Experiment with the model&#39;s parameters (<code>n_estimators</code>, <code>learning_rate</code>, <code>max_depth</code>) and observe how they affect the accuracy:<pre><code class="language-python">model = XGBClassifier(n_estimators=50, learning_rate=0.05, max_depth=4)
+model.fit(X_train, y_train)
+y_pred = model.predict(X_test)
+print(&quot;New Accuracy:&quot;, accuracy_score(y_test, y_pred))
+</code></pre>
+</li>
+<li><strong>Question for Students:</strong><ul>
+<li>How does changing the parameters impact the accuracy? What happens when you adjust <code>learning_rate</code> or <code>max_depth</code>?</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="assignment-summary"><strong>Assignment Summary:</strong></h3>
+<p>By completing this assignment, students will understand:</p>
+<ol>
+<li>How to use <code>XGBClassifier</code> effectively.</li>
+<li>How to evaluate model performance.</li>
+<li>How to tweak parameters to improve model accuracy.</li>
+</ol>
+<p><strong>Bonus for Advanced Students:</strong></p>
+<ul>
+<li>Use the feature importance plot to see which features are most significant in the model:<pre><code class="language-python">from xgboost import plot_importance
+import matplotlib.pyplot as plt
+plot_importance(model)
+plt.show()
+</code></pre>
+</li>
+</ul>
