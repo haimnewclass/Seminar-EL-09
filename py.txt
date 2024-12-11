@@ -1,5 +1,7 @@
 pip list
 pip list --not-required
+pip index versions numpy    - verification for numpy version
+
 python -m venv xgboost_env - create new environment
 
 pip install -r requirements.txt
