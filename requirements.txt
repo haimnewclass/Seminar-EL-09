@@ -17,3 +17,5 @@ portalocker
 torchtext
 xgboost
 sklearn
+transformers
+datasets
